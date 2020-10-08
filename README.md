@@ -4,8 +4,8 @@ SmsBroadcast 어플에 대한 설명
 =============
 
 1. 어플에 퍼미션 추가
-2.MyReceiver클래스 에 대하여
-3.하이브리드 앱을 이용해 MyReciever클래스로 받은 메세지를 Html 페이지에 띄우기
+2. MyReceiver클래스 에 대하여
+3. 하이브리드 앱을 이용해 MyReciever클래스로 받은 메세지를 Html 페이지에 띄우기
 
 *어플에 퍼미션 추가
 ```
