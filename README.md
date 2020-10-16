@@ -174,6 +174,7 @@ public void ShowSMS(Intent intent) {
 
  - 이 메서드는 BroadcastReceiver가 Intent 브로드 캐스트를 수신 할 때 호출됩니다.
    - https://developer.android.com/reference/android/content/BroadcastReceiver
+ - message배열에 메세지의 주소,내용,번호를 추출합니다.  
 
 ## Parameter
 
@@ -308,3 +309,17 @@ private SmsMessage[] parseSmsMessage(Bundle bundle){
         }return  messages;
     }
 ```
+
+# MyReceiver클래스 추가 설명
+
+```
+public class MyReceiver extends BroadcastReceiver { ....
+```
+# BroadcastReceiver
+  - 브로드캐스트는 시스템에서 발생하는 이벤트 입니다.
+    - ex) 배터리 부족하거나 사진을 캡처했다고 알리는 상태표시줄
+  - 브로드캐스트 메시지는 Intent 객체에서 래핑됩니다. putExtra()를 통해 인텐트에 추가 정보를 첨부하거나 할 수 있습니다.
+    
+## Description
+   - 브로드캐스트를 상속받았고 onReceive(Context,Intent)를 구현합니다.
+
