@@ -322,4 +322,5 @@ public class MyReceiver extends BroadcastReceiver { ....
     
 ## Description
    - 브로드캐스트를 상속받았고 onReceive(Context,Intent)를 구현합니다.
+   - MyReceiver 클래스에서 받아온 메시지를 onReceive메소드로 Intent객체로 래핑합니다.
 
