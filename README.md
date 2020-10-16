@@ -41,7 +41,7 @@ private void requirePerms(){
 
 ## Description 
 
- - sms 권한을 얻어옵니다.
+ - 문자 기반 sms를 보냅니다.
 
 ## Parameter
 
