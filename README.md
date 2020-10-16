@@ -66,14 +66,9 @@ private void requirePerms(){
 
 ## Source code 
 ```
-private void requirePerms(){
-        String[] permissions={Manifest.permission.RECEIVE_SMS};
-        int permissionCheck = ContextCompat.checkSelfPermission(this,Manifest.permission.RECEIVE_SMS);
-        if(permissionCheck== PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this,permissions,1);
-
-        }
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
+ private void sendSMS(String phoneNumber,String message){
+        SmsManager smsManager= SmsManager.getDefault();
+        smsManager.sendTextMessage(phoneNumber,null,message,null,null);
 
     }
 ```
