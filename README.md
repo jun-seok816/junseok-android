@@ -37,6 +37,119 @@ private void requirePerms(){
     }
 ```
 
+# sendSms()메소드
+
+## Description 
+
+ - sms 권한을 얻어옵니다.
+
+## Parameter
+
+- String PhoneNumber
+
+- String message
+    
+## Return 
+
+ - type : void
+ 
+ - value : 없음
+
+## Dependence function
+
+- getDefalut() 
+  - 기본 구독 ID와 연결된 SmsManager를 가져옵니다.
+  - https://developer.android.com/reference/java/util/Locale
+  
+- sendTextMessage()
+  - 문자 기반 SMS를 보냅니다
+
+## Source code 
+```
+private void requirePerms(){
+        String[] permissions={Manifest.permission.RECEIVE_SMS};
+        int permissionCheck = ContextCompat.checkSelfPermission(this,Manifest.permission.RECEIVE_SMS);
+        if(permissionCheck== PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this,permissions,1);
+
+        }
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
+
+    }
+```
+
+# onNewIntent()메소드
+
+## Description 
+
+ - 실행한 Activity가 포그라운드인 상태에서 Intent에 값을 추가하고 StartActivity를 호출할때 onnewIntent 메소드가 호출된다.
+
+## Parameter
+
+- 없음
+    
+## Return 
+
+ - type : void
+ 
+ - value : 없음
+
+## Dependence function
+
+- ShowSMS() 
+
+## Source code 
+
+```
+ @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ShowSMS(intent);
+    }
+```
+
+# ShowSMS메소드
+
+## Description 
+
+ - 받아온 메세지 값을 토스트 메세지로 띄움
+
+## Parameter
+
+- Intent intent
+    
+## Return 
+
+ - type : void
+ 
+ - value : 없음
+
+## Dependence function
+
+- getStringExtra()
+  - 인텐트에서 확장 데이터를 검색합니다.
+
+## Source code 
+
+```
+public void ShowSMS(Intent intent) {
+
+        if (intent != null) {
+            String  sender = intent.getStringExtra("sender");
+            String content = intent.getStringExtra("content");
+
+
+            tv_sender = sender;
+            tv_content = content;
+
+            Toast.makeText(getApplicationContext(),tv_content,Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
+```
+
+
 # MyReceiver클래스
 
 # Manifest
@@ -81,6 +194,11 @@ private void requirePerms(){
 ## Dependence function
 
 - sendToActivity()
+
+- getExtras()
+  - getExtras()를 이용해서 데이터를 받을 수 있다.
+  - 인텐트에서 확장 된 데이터의 맵을 검색합니다.
+  - https://developer.android.com/reference/android/content/Intent
 
 - getOriginatingAddress()
   - 이 메소드는 실제 송신자 번호를 알려줍니다
@@ -162,4 +280,36 @@ private void sendToActivity(Context context, String sender, String content, Date
         context.startActivity(intent);
     }
 ```
+# parseSmsMessage()
 
+## Description 
+
+ - SMS문자의 내용을 뽑아내는 정형화된 코드이다.
+
+## Parameter
+
+- 없음
+    
+## Return 
+
+ - type : SmsMessage[]
+ 
+ - value : messages
+
+## Dependence function
+
+- createFromPdu() 
+  - 지정된 메시지 형식을 사용하여 원시 PDU에서 SmsMessage를 만듭니다. 
+  - https://developer.android.com/reference/android/telephony/SmsMessage#createFromPdu(byte[],%20java.lang.String)
+
+## Source code 
+
+```
+private SmsMessage[] parseSmsMessage(Bundle bundle){
+        Object[] objs = (Object[])bundle.get("pdus");
+        SmsMessage[] messages = new SmsMessage[objs.length];
+        for (int i= 0; i<objs.length; i++){
+            messages[i] = SmsMessage.createFromPdu((byte[])objs[i]);
+        }return  messages;
+    }
+```
