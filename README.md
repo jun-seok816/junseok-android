@@ -22,6 +22,8 @@
   - 권한 요청 코드를 직접 관리할 수 있게하는 메소드. 
   - 호출에 파라미터로 요청 코드를 포함합니다
   - https://developer.android.com/training/permissions/requesting?hl=ko
+- checkSelfPermission()
+  - 메서드는 앱에 권한이 있는지에 따라 PERMISSION_GRANTED 또는 PERMISSION_DENIED를 반환합니다.
 
 ## Source code 
 ```
