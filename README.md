@@ -18,12 +18,14 @@
 
 ## Dependence function
 
-- requestPermissions() 
-  - 권한 요청 코드를 직접 관리할 수 있게하는 메소드. 
-  - 호출에 파라미터로 요청 코드를 포함합니다
+- ActivityCompat.requestPermissions() 
+  - 퍼미션을 요청합니다
+  - 파라미터는 요청 코드를 넣습니다.
   - https://developer.android.com/training/permissions/requesting?hl=ko
-- checkSelfPermission()
-  - 메서드는 앱에 권한이 있는지에 따라 PERMISSION_GRANTED 또는 PERMISSION_DENIED를 반환합니다.
+- ContextCompat.checkSelfPermission()
+  - 앱에 특정권한이 부여됬는지 확인합니다.
+  - 앱에 권한이 있는지에 따라 PERMISSION_GRANTED 또는 PERMISSION_DENIED를 반환합니다.
+  - https://developer.android.com/training/permissions/requesting?hl=ko
 
 ## Source code 
 ```
@@ -60,11 +62,12 @@ private void requirePerms(){
 ## Dependence function
 
 - getDefalut() 
-  - 기본 구독 ID와 연결된 SmsManager를 가져옵니다.
-  - https://developer.android.com/reference/java/util/Locale
+  - SMS작업을 관리하는 SmsManager 개체를 가져옵니다.
+  - https://developer.android.com/reference/android/telephony/gsm/SmsManager
   
 - sendTextMessage()
   - 문자 기반 SMS를 보냅니다
+  - https://developer.android.com/reference/android/telephony/gsm/SmsManager
 
 ## Source code 
 ```
@@ -77,9 +80,13 @@ private void requirePerms(){
 
 # onNewIntent()메소드
 
+- 액티비티가 새로 만들어지지 않고 재사용될 경우 액티비티의 인텐트를 전달받아 처리하는 메소드
+- https://developer.android.com/reference/android/app/Activity#onNewIntent(android.content.Intent)
+- https://cishome.tistory.com/68
+
 ## Description 
 
- - 실행한 Activity가 포그라운드인 상태에서 Intent에 값을 추가하고 StartActivity를 호출할때 onnewIntent 메소드가 호출된다.
+ - activity
 
 ## Parameter
 
@@ -123,8 +130,9 @@ private void requirePerms(){
 
 ## Dependence function
 
-- getStringExtra()
-  - 인텐트에서 확장 데이터를 검색합니다.
+- intent.getStringExtra()
+  - 인텐트에서 문자열을 가져오기위해 사용하는 메소드
+  - https://developer.android.com/reference/android/app/SearchManager#QUERY
 
 ## Source code 
 
@@ -200,9 +208,11 @@ public void ShowSMS(Intent intent) {
 
 - getOriginatingAddress()
   - 이 메소드는 실제 송신자 번호를 알려줍니다
+  - https://developer.android.com/reference/android/telephony/SmsMessage#getOriginatingAddress()
   
 - getMessageBody()
   - 메시지 본문이 존재하고 텍스트기반인 경우 문자열로 반환합니다.
+  - https://developer.android.com/reference/android/telephony/SmsMessage#getMessageBody()
   
 - getTimestampMillis()
   - currentTimeMillis () 형식으로 서비스 센터 타임 스탬프를 반환합니다.
@@ -238,7 +248,7 @@ public void ShowSMS(Intent intent) {
 
 ## Description 
 
- - 얻어온 sender content 변수를 intent를 사용하여 MainActivity로 값을 넘김
+ - 받아온 메시지 데이터를 기반으로 activity를 시작합니다.
 
 ## Parameter
 
@@ -255,16 +265,16 @@ public void ShowSMS(Intent intent) {
 ## Dependence function
 
 - addFlags()
-  - 인텐트에 추가 플래그를 추가합니다.
-  - https://medium.com/@logishudson0218/intent-flag%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4-d8c91ddd3bfc
-  
+  - Activity를 해당 Task에 띄웁니다.
+  - https://iw90.tistory.com/85
 - putExtra()
-  - 액티비티 이동과 동시에 이전 액티비티에서 이동하는 액티비티로 어떤 값을 넘기고 싶을때 쓰는 함수
-  - https://dpdpwl.tistory.com/22
+  - 인텐트에 확장 데이터를 추가합니다.
+  - 지정된 문자열에 데이터를 넣습니다.
+  - https://developer.android.com/reference/android/content/Intent#putExtra(java.lang.String,%20boolean)
   
-- startActivity()
-  -  Intent로 지정된 DisplayMessageActivity의 인스턴스를 시작합니다. 
-  - https://developer.android.com/training/basics/firstapp/starting-activity?hl=ko
+- context.startActivity()
+  - 새로운 activity를 시작합니다.
+  - https://developer.android.com/reference/android/content/Context#startActivity(android.content.Intent)
 ## Source code 
 ```
 private void sendToActivity(Context context, String sender, String content, Date date){
@@ -282,7 +292,7 @@ private void sendToActivity(Context context, String sender, String content, Date
 
 ## Description 
 
- - SMS문자의 내용을 뽑아내는 정형화된 코드이다.
+ - SMS문자의 내용을 뽑아내는 코드이다.
 
 ## Parameter
 
