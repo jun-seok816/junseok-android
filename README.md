@@ -61,11 +61,11 @@ private void requirePerms(){
 
 ## Dependence function
 
-- getDefalut() 
+- Smsmanager.getDefalut() 
   - SMS작업을 관리하는 SmsManager 개체를 가져옵니다.
   - https://developer.android.com/reference/android/telephony/gsm/SmsManager
   
-- sendTextMessage()
+- smsmanger.sendTextMessage()
   - 문자 기반 SMS를 보냅니다
   - https://developer.android.com/reference/android/telephony/gsm/SmsManager
 
