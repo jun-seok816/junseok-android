@@ -307,7 +307,8 @@ private void sendToActivity(Context context, String sender, String content, Date
 ## Dependence function
 
 - createFromPdu() 
-  - 지정된 메시지 형식을 사용하여 원시 PDU에서 SmsMessage를 만듭니다. 
+  - 원시 PDU에서 SmsMessage를 만듭니다.
+  - 원시 pdu: 데이터를 전송하기 위한 전송단위
   - https://developer.android.com/reference/android/telephony/SmsMessage#createFromPdu(byte[],%20java.lang.String)
 
 ## Source code 
