@@ -314,6 +314,8 @@ private void sendToActivity(Context context, String sender, String content, Date
   - 원시 PDU에서 SmsMessage를 만듭니다.
   - 원시 pdu: 데이터를 전송하기 위한 전송단위
   - https://developer.android.com/reference/android/telephony/SmsMessage#createFromPdu(byte[],%20java.lang.String)
+  - PDU란 데이터 통신에서 상위 계층이 전달한 데이터에 붙이는 제어정보를 뜻한다 
+   - https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8B%A8%EC%9C%84
 
 ## Source code 
 
