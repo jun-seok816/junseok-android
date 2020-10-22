@@ -19,8 +19,8 @@
 ## Dependence function
 
 - ActivityCompat.requestPermissions() 
-  - 퍼미션을 요청합니다
-  - 파라미터는 요청 코드를 넣습니다.
+  - Permission을 요청합니다
+  - Parameter는 요청 코드를 넣습니다.
   - https://developer.android.com/training/permissions/requesting?hl=ko
 - ContextCompat.checkSelfPermission()
   - 앱에 특정권한이 부여됬는지 확인합니다.
