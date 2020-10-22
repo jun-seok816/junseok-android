@@ -50,9 +50,11 @@ private void requirePerms(){
 ## Parameter
 
 - String PhoneNumber
+  - 메세지를 보낼 전화번호에 해당합니다.
 
 - String message
-    
+  - 메세지의 내용에 해당합니다.
+  
 ## Return 
 
  - type : void
