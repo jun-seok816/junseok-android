@@ -82,7 +82,7 @@ private void requirePerms(){
 
 # onNewIntent()메소드
 
-- 액티비티가 새로 만들어지지 않고 재사용될 경우 액티비티의 인텐트를 전달받아 처리하는 메소드
+- Activity가 이미 생성되어있으면 새로생긴 Intent는 OnNewIntent메소드에 전달된다
 - https://developer.android.com/reference/android/app/Activity#onNewIntent(android.content.Intent)
 - https://cishome.tistory.com/68
 
