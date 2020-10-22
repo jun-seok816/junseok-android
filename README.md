@@ -184,9 +184,11 @@ public void ShowSMS(Intent intent) {
 
 ## Description 
 
- - 이 메서드는 BroadcastReceiver가 Intent 브로드 캐스트를 수신 할 때 호출됩니다.
+ - 이 메서드는 BroadcastReceiver가 Intent를 수신 할 때 호출됩니다.
    - https://developer.android.com/reference/android/content/BroadcastReceiver
- - message배열에 메세지의 주소,내용,번호를 추출합니다.  
+ - message배열에 메세지의 주소,내용,번호를 추출합니다. 
+ - BroadcastReceiver란
+   - Context에서 보낸 Broadcast intents를 수신하고 처리하는 
 
 ## Parameter
 
